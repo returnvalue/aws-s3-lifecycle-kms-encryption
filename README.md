@@ -30,8 +30,7 @@ The system implements multiple layers of security and automation:
     ```bash
     terraform init
     terraform apply -auto-approve
-    
-```
+    ```
 
 ## Verification & Testing
 
@@ -41,15 +40,13 @@ To test the security and encryption:
     ```bash
     awslocal s3 cp README.md s3://secure-lifecycle-data-bucket/ --sse aws:kms --sse-kms-key-id alias/s3-secure-storage-key
     aws s3 cp README.md s3://secure-lifecycle-data-bucket/ --sse aws:kms --sse-kms-key-id alias/s3-secure-storage-key
-    
-```
+    ```
 
 2.  **Verify Encryption Status:**
     ```bash
     awslocal s3api head-object --bucket secure-lifecycle-data-bucket --key README.md
     aws s3api head-object --bucket secure-lifecycle-data-bucket --key README.md
-    
-```
+    ```
     Confirm the `ServerSideEncryption` is `aws:kms`.
 
 3.  **Test HTTPS Enforcement (Conceptual):**
@@ -59,8 +56,7 @@ To test the security and encryption:
     ```bash
     awslocal s3api get-bucket-lifecycle-configuration --bucket secure-lifecycle-data-bucket
     aws s3api get-bucket-lifecycle-configuration --bucket secure-lifecycle-data-bucket
-    
-```
+    ```
 
 ## Cleanup
 
